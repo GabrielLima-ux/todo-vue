@@ -24,11 +24,11 @@
   })
 
   const getTarefasFinalizadas = () => {
-    return estado.tarefas.filter(tarefa => tarefa.finalizada).length
+    return estado.tarefas.filter(tarefa => tarefa.finalizada)
   } 
 
   const getTarefasPendentes = () => {
-    return estado.tarefas.filter(tarefa => !tarefa.finalizada).length
+    return estado.tarefas.filter(tarefa => !tarefa.finalizada)
   } 
 
   const getTarefasFiltradas = () => {
@@ -56,7 +56,7 @@
 <template>
 
   <div class="container">
-    <Cabecalho :tarefas-pendentes="getTarefasPendentes()" />
+    <Cabecalho :tarefas-pendentes="getTarefasPendentes().length" />
     <Formulario :trocar-filtro="evento => estado.filtro = evento.target.value" :tarefa-temp="estado.tarefaTemp" :edita-tarefa-temp="evento => estado.tarefaTemp = evento.target.value" :cadastra-tarefa="cadastraTarefa" />
     <ListaDeTarefas :tarefas="getTarefasFiltradas()"/>
   </div>
